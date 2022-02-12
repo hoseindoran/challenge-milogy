@@ -1,0 +1,48 @@
+.sidebar {
+    background: #F2F3F5;
+    border-radius: 16px;
+    width: 288px;
+    padding: 24px 32px;
+}
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+}
+.sidebarHeader span {
+    color: #009EF7;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+}
+.sidebarList {
+    padding: 0;
+    margin-top: 33PX;
+}
+.sidebarItem {
+    margin-bottom: 11px;
+    list-style: url("../../images/arrow-left.svg");
+    list-style-position: inside;
+}
+
+.sidebarLink {
+    color: #494949;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24.8px;
+}
+
+.sideBarFooter {
+    display: flex;
+    align-items: center;
+    margin-top: 143px;
+    justify-content: space-between;
+}
+.imgProfile{
+    width: 56px;
+    height: 56px;
+}
+
+
+.imgSetting {
+    width: 20px;
+}

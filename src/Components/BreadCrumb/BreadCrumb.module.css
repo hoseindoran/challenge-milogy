@@ -1,0 +1,34 @@
+.breadCrumbTitle {
+    font-size: 20px;
+    color: var(--black);
+    font-weight: 700px;
+}
+.breadCrumbItem {
+    font-size: 12px;
+    color: var(--dark);
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+}
+.breadCrumbItem.active {
+    color: var(--black);
+    font-weight: 700;
+}
+.breadCrumbItem:before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #C4C4C4;
+    bottom: 0;
+    transform: translateY(-50%);
+    right: -10px;
+}
+.breadCrumbItem:first-child {
+    list-style: none;
+    margin-right: 0;
+}
+.breadCrumbItem:first-child:before {
+    content: unset;
+}
