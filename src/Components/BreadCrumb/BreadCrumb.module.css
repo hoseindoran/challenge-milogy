@@ -21,7 +21,7 @@
     height: 5px;
     border-radius: 50%;
     background: #C4C4C4;
-    bottom: 0;
+    bottom: 2px;
     transform: translateY(-50%);
     right: -10px;
 }

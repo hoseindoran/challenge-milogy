@@ -3,6 +3,8 @@
     border-radius: 16px;
     width: 288px;
     padding: 24px 32px;
+    height: fit-content;
+    position: relative;
 }
 .sidebarHeader {
     display: flex;
@@ -20,8 +22,18 @@
 }
 .sidebarItem {
     margin-bottom: 11px;
-    list-style: url("../../images/arrow-left.svg");
-    list-style-position: inside;
+    list-style: none;
+    position: relative;
+    padding-right: 30px;
+}
+.sidebarItem:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 5px;
+    background: url("../../images/arrow-left.svg");
+    width: 20px;
+    height: 20px;
 }
 
 .sidebarLink {
@@ -34,8 +46,20 @@
 .sideBarFooter {
     display: flex;
     align-items: center;
-    margin-top: 143px;
+    margin-top: 110px;
     justify-content: space-between;
+}
+.sideBarFooter h6 {
+    color: #181C32;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 22px;
+}
+.sideBarFooter span {
+    color: #494949;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
 }
 .imgProfile{
     width: 56px;
@@ -45,4 +69,20 @@
 
 .imgSetting {
     width: 20px;
+}
+
+@media (max-width: 767px) {
+    .sidebar {
+        position: fixed;
+        right: -300px;
+        top: 0;
+        bottom: 0;
+        border-radius: 0;
+        z-index: 9999;
+        transition: right 0.5s;
+    }
+
+    .openSideBar {
+        right: 0;
+    }
 }

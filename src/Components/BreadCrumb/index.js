@@ -1,13 +1,13 @@
 import styles from "./BreadCrumb.module.css";
 
-const BreadCrumb = () => {
+const BreadCrumb = ({items, title}) => {
     return (
         <>
-            <h3 className={styles.breadCrumbTitle}>ایجاد رویداد</h3>
+            <h3 className={styles.breadCrumbTitle}>{title}</h3>
             <ul className={styles.breadCrumbList}>
-                <li className={styles.breadCrumbItem}>داشبورد</li>
-                <li className={styles.breadCrumbItem}>رویداد ها</li>
-                <li className={`${styles.breadCrumbItem} ${styles.active}`}>ایجاد رویداد</li>
+                {
+                    items.map((item,index,items) => <li key={index} className={index + 1 !== items.length ? `${styles.breadCrumbItem}` : `${styles.breadCrumbItem} ${styles.active}`}>{item}</li>)
+                }
             </ul>
         </>
     )

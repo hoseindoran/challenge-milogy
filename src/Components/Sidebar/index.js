@@ -1,12 +1,12 @@
 import {Link} from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import arrow from "../../images/arrow.svg";
-import profile from "../../images/img.png";
+import profile from "../../images/profile.png";
 import setting from "../../images/setting.svg";
 
-const Sidebar = () => {
+const Sidebar = ({state}) => {
     return (
-        <div className={styles.sidebar}>
+        <div className={state ? `${styles.sidebar} ${styles.openSideBar}` : `${styles.sidebar}`}>
             <div className={styles.sidebarHeader}>
                 <img src={arrow} />
                 <span>استارتاپ آکادمی</span>
@@ -28,10 +28,10 @@ const Sidebar = () => {
             <div className={styles.sideBarFooter}>
                 <img src={profile} className={styles.imgProfile}/>
                 <div className="d-flex flex-column ms-auto pe-1">
-                    <h6>محمد همتی</h6>
-                    <span>مدرس دوره طراحی</span>
+                    <h6 className="mb-0">محمد همتی</h6>
+                    <span>مدرس دوره طراحی رفتار</span>
                 </div>
-                <img src={setting} className={styles.imgSetting}/>
+                <Link to="/"><img src={setting} className={styles.imgSetting}/></Link>
             </div>
         </div>
     )

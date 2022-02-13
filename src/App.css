@@ -4,23 +4,36 @@
     --white: #ffffff;
 }
 
+@font-face {
+    font-family: "yekan";
+    src: url("./Fonts/Yekan/Yekan.eot"),
+    url('./Fonts/Yekan/Yekan.woff2') format('woff2'),
+    url('./Fonts/Yekan/Yekan.woff') format('woff'),
+    url('./Fonts/Yekan/Yekan.ttf') format('truetype');
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     direction: rtl;
+    font-family: "yekan";
 }
+
 .main-content {
     display: flex;
     width: 100%;
     padding: 0 70px;
+    position: relative;
 }
+
 header {
     padding: 0 70px;
 }
+
 a, a:hover {
     text-decoration: none;
 }
@@ -36,10 +49,10 @@ a, a:hover {
     background: var(--white);
     box-shadow: 0 0 20px rgba(56, 71, 109, 0.1);
     border-radius: 12px;
-    height: 400px;
 }
+
 .btn-event {
-    font-weight: bold;
+    font-weight: 500;
     font-size: 16px;
     border: 0;
     outline: 0;
@@ -52,12 +65,167 @@ a, a:hover {
     width: 147px;
     height: 47px;
 }
+
 .btn-event-success {
     background: #05A2E5;
     color: #E8EFF7;
 }
+
 .btn-event-cancel {
     background: #F0EEEE;
     color: #05A2E5;
     margin-right: 24px;
+}
+.btn-event-copy {
+    font-size: 16px;
+    font-width: 500;
+    border: 0;
+    outline: 0;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: #F0EEEE;
+    color: #009EF7;
+    width: 100%;
+    height: 100%;
+}
+
+.form-control {
+    background: #F6F4F4;
+    border-radius: 4px;
+    color: #525565;
+    border:none;
+    outline: none;
+    padding: 12.25px 10px;
+    font-size: 13px;
+}
+select.form-control {
+    color: #999999;
+    position: relative;
+    appearance: auto;
+    -moz-appearance: auto;
+    -webkit-appearance: auto;
+}
+
+.form-label.required {
+    position: relative;
+}
+
+.form-label.required:after {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 3px;
+    background: url("./images/star.svg");
+    width: 7px;
+    height: 7px;
+}
+.form-control:focus {
+    border: none;
+    box-shadow: none;
+    background: #F6F4F4;
+}
+.form-label-event-type {
+    width: 100%;
+    border: 1px dashed #C5C6CB;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 24px;
+    height: 100%;
+    transition: border-color 0.5s;
+}
+.form-label-event-type h5 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 25px;
+    color: #181C03;
+}
+.form-label-event-type p {
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 20px;
+    color: #7E8299;
+    text-align: justify;
+    margin-bottom: 0;
+}
+.form-create-event input[type=radio]:checked+label {
+    border-color: #009EF7;
+}
+input[type="datetime-local"] {
+    text-align: right;
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url("./images/calendar.svg") no-repeat;
+    width: 20px;
+    height: 20px;
+    border-width: thin;
+    position: absolute;
+    left: 3px;
+}
+
+.btn-form-event {
+    padding-right: 70px;
+}
+
+.nav-tabs {
+    border: 0;
+}
+.nav-tabs .nav-item {
+    padding: 12px;
+}
+.nav-tabs .nav-link {
+    color: #181C32;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    border: 0;
+    padding: 0 0 8px;
+}
+.nav-tabs .nav-link.active {
+    color: #05A2E6;
+    font-weight: 600;
+    border-bottom: 3px solid #05A2E5;
+}
+
+.label-upload-file {
+    padding: 40px 35px;
+    width: 100%;
+    background: #F6F4F4;
+    border: 1px dashed #009EF7;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.label-upload-file h6{
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 22px;
+    color: #1F2339;
+}
+.label-upload-file p {
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 20px;
+    color: #999999;
+    margin-bottom: 4px;
+}
+
+.error-text {
+    font-size: 12px;
+    color: #F97350;
+}
+
+
+@media (max-width: 767px) {
+    .main-content, header {
+        padding: 0 15px;
+    }
+    .event-box {
+        width: 100%;
+    }
 }
