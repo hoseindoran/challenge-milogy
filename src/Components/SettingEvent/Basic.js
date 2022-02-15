@@ -2,10 +2,10 @@ import {useRef} from 'react';
 import {useForm} from "react-hook-form";
 import moment from "moment";
 import save from "../../images/save.svg";
-import uploadFile from "../../images/file-upload.svg";
+import uploadFileImg from "../../images/file-upload.svg";
 import {Tab, Tabs} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import {updateEvent} from "../../Api";
+import {updateEvent, uploadFile} from "../../Api";
 import {toast} from "react-toastify";
 
 const Basic = ({event}) => {
@@ -28,26 +28,43 @@ const Basic = ({event}) => {
 
     const onSubmit = async data => {
 
-        const values = {
-            name: data.name,
-            startTime: data.startTime,
-            endTime: data.endTime,
-            timeZone: data.timeZone,
-            language: data.language,
-            cover: data.cover[0].name
-        }
+        const fd = new FormData();
+        fd.append("file",data.cover[0]);
+
+        
 
         try {
-            await updateEvent(newValues.id, values).then(response => {
-                if (response.success) {
-                    toast.success("رویداد با موفقیت اضافه شد")
+            uploadFile(fd).then(response => {
+                if(response.success) {
+
+                    const values = {
+                        name: data.name,
+                        startTime: data.startTime,
+                        endTime: data.endTime,
+                        timeZone: data.timeZone,
+                        language: data.language,
+                        cover: response.data.fileName
+                    }
+
+                    try {
+                        updateEvent(newValues.id, values).then(response => {
+                            if (response.success) {
+                                toast.success("رویداد با موفقیت اضافه شد")
+                            }
+                        }).catch(error => {
+                            toast.warning(error.response.data.errors[0].error);
+                        });
+                    } catch (error) {
+                        toast.error("خطایی بوجود آمده است لطفا مجددا تلاش کنید")
+                    }
                 }
             }).catch(error => {
                 toast.warning(error.response.data.errors[0].error);
-            });
+            })
         } catch (error) {
             toast.error("خطایی بوجود آمده است لطفا مجددا تلاش کنید")
         }
+
     };
 
     const copyToClipboard = str => {
@@ -123,7 +140,7 @@ const Basic = ({event}) => {
                                 <label htmlFor={"uploadFile"} className="label-upload-file">
                                     <div className="row">
                                         <div className="col-1">
-                                            <img src={uploadFile}/>
+                                            <img src={uploadFileImg}/>
                                         </div>
                                         <div className="col-11">
                                             <h6>فایل را آپلود یا در اینجا درگ کنید.</h6>
