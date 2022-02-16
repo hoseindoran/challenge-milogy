@@ -50,7 +50,13 @@ a, a:hover {
     box-shadow: 0 0 20px rgba(56, 71, 109, 0.1);
     border-radius: 12px;
 }
-
+.form-create-event h6 {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    color: #5E6278;
+}
 .btn-event {
     font-weight: 500;
     font-size: 16px;

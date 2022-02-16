@@ -2,11 +2,12 @@ import {useRef} from 'react';
 import {useForm} from "react-hook-form";
 import moment from "moment";
 import save from "../../images/save.svg";
-import uploadFileImg from "../../images/file-upload.svg";
 import {Tab, Tabs} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {updateEvent, uploadFile} from "../../Api";
 import {toast} from "react-toastify";
+import uploadFileImg from "../../images/file-upload.svg";
+import warning from "../../images/warning.svg";
 
 const Basic = ({event}) => {
 
@@ -79,10 +80,16 @@ const Basic = ({event}) => {
                 <div className="form-create-event">
                     <Tabs defaultActiveKey="basic" id="event-setting" className="mb-3 justify-content-center">
                         <Tab eventKey="basic" title="اطلاعات پایه">
+                            <div className="row mb-4">
+                                <div className="col-12">
+                                    <h6>برای اطلاعات بیشتر <a href="#">راهنما</a> را ببینید.</h6>
+                                </div>
+                            </div>
                             <div className="mb-4">
-                                <label htmlFor="EventName" className="form-label required">نام رویداد</label>
+                                <label htmlFor="EventName" className="form-label required">نام رویداد</label><span className="me-2"><img src={warning}/></span>
                                 <input type="text" className="form-control"
                                        id="EventName" {...register('name', {required: true})}/>
+                                {errors?.name?.type === "required" && <p className="error-text">نام رویداد اجباری است.</p>}
                             </div>
                             <div className="row mb-4">
                                 <div className="col-lg-6 col-sm-12 position-relative">
@@ -90,12 +97,14 @@ const Basic = ({event}) => {
                                     <input type="datetime-local"
                                            min={moment().format('YYYY-MM-DDTkk:mm')} {...register('startTime', {required: true})}
                                            className="form-control" id="eventStartDate"/>
+                                    {errors?.startTime?.type === "required" && <p className="error-text">تاریخ و ساعت شروع رویداد اجباری است.</p>}
                                 </div>
                                 <div className="col-lg-6 col-sm-12 position-relative">
                                     <label htmlFor="eventEndDate" className="form-label">تاریخ و ساعت پایان</label>
                                     <input type="datetime-local"
                                            min={moment().format('YYYY-MM-DDTkk:mm')} {...register('endTime', {required: true})}
                                            className="form-control" id="eventEndDate"/>
+                                    {errors?.endTime?.type === "required" && <p className="error-text">تاریخ و ساعت پایان رویداد اجباری است.</p>}
                                 </div>
                             </div>
                             <div className="row mb-4">
@@ -108,6 +117,7 @@ const Basic = ({event}) => {
                                         <option value="Asia/Kuwait">Asia/Kuwait</option>
                                         <option value="Asia/Kabul">Asia/Kabul</option>
                                     </select>
+                                    {errors?.timeZone?.type === "required" && <p className="error-text">انتخاب منطقه زمانی اجباری است.</p>}
                                 </div>
                                 <div className="col-lg-6 col-sm-12 position-relative">
                                     <label htmlFor="eventEndDate" className="form-label">زبان اصلی رویداد</label>
@@ -118,6 +128,7 @@ const Basic = ({event}) => {
                                         <option value="FA">فارسی</option>
                                         <option value="FR">France</option>
                                     </select>
+                                    {errors?.language?.type === "required" && <p className="error-text">انتخاب زبان رویداد اجباری است.</p>}
                                 </div>
                             </div>
                             <div className="mb-4">
@@ -150,6 +161,7 @@ const Basic = ({event}) => {
                                         </div>
                                     </div>
                                 </label>
+                                {errors?.cover?.type === "required" && <p className="error-text">انتخاب تصویر رویداد اجباری است.</p>}
                                 <input type="file" ref={fileInput} {...register('cover', {required: true})} hidden
                                        className="form-control" id="uploadFile"/>
                             </div>
